@@ -1,0 +1,11 @@
+@use '../variables';
+
+.puddle-bg {
+    padding-inline: 7px;
+    background-color: var(--color-greenL);
+    border-radius: var(--border-radius-small);
+
+    &--light {
+        background-color: var(--color-grey);
+    }
+}

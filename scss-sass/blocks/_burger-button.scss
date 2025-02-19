@@ -1,0 +1,24 @@
+@use '../mixins' as mx;
+@use '../variables';
+@use '../media' as md;
+
+.burger-button {
+    @include mx.reset-button;
+    @include mx.square(48px);
+    position: relative;
+    border-radius: var(--border-radius-small);
+
+    @include md.hover {
+        background-color: var(--color-greenL);
+    }
+
+    &::after {
+        content: '';
+        @include mx.abs-center;
+        width: 50%;
+        height: 2px;
+        border-radius: 5px;
+        background-color: var(--color-dark);
+        box-shadow: 0 -8px, 0 8px;
+    }
+}

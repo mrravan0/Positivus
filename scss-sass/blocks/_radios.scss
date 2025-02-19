@@ -1,0 +1,44 @@
+@use '../variables';
+@use '../mixins' as m;
+@use '../media' as md;
+
+.radios {
+    display: flex;
+    column-gap: 25px;
+}
+
+.radio {
+    display: flex;
+    align-items: center;
+    column-gap: 14px;
+    transition-duration: var(--transition-duration);
+
+    @include md.hover {
+        color: green;
+    }
+
+    &__input {
+        &:not(:checked)+.radio__emulator::after {
+            opacity: 0;
+        }
+    }
+
+    &__emulator {
+        @include m.flex-center;
+        @include m.square(28px);
+        background-color: var(--color-light);
+        border: var(--border);
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+
+        &::after {
+            @include m.abs-center;
+            @include m.square(60%);
+            content: '';
+            background-color: var(--color-greenL);
+            border-radius: inherit;
+            transition-duration: var(--transition-duration);
+        }
+    }
+}

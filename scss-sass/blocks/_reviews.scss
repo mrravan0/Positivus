@@ -1,0 +1,134 @@
+@use '../variables';
+@use '../mixins' as m;
+@use '../media' as md;
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    row-gap: 110px;
+    padding: 84px 5px 54px;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    border-radius: var(--border-radius-large);
+
+    @include md.respond('max', md.$desktop) {
+        row-gap: 90px;
+    }
+
+    @include md.respond('max', md.$tablet) {
+        padding-block: 30px 46px;
+        row-gap: 46px;
+    }
+
+    &__slider {
+        --reviewsSliderSlideWidth: 606px;
+
+        @include md.respond('max', md.$tablet) {
+            --reviewsSliderSlideWidth: 330px;
+        }
+
+        &-list {
+            display: flex;
+            column-gap: 50px;
+            scroll-snap-type: x mandatory;
+            overflow-x: scroll;
+
+            @include md.respond('max', md.$tablet) {
+                column-gap: 30px;
+            }
+        }
+
+        &-item {
+            min-width: var(--reviewsSliderSlideWidth);
+            scroll-snap-align: start;
+        }
+    }
+
+    &-card {
+        --reviewCardCornerWidth: 40px;
+        --reviewCardCornerOffsetLeft: 52px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 48px;
+
+        @include md.respond('max', md.$mobile) {
+            --reviewCardCornerWidth: 32px;
+            --reviewCardCornerOffsetLeft: 46px;
+            row-gap: 42px;
+        }
+
+        &__body {
+            position: relative;
+            padding: 48px var(--reviewCardCornerOffsetLeft) 52px;
+            border: 1px solid var(--color-greenL);
+            border-radius: var(--border-radius-large);
+
+            @include md.respond('max', md.$tablet) {
+                padding: 30px;
+            }
+
+            &::after {
+                content: '';
+                @include m.square(var(--reviewCardCornerWidth));
+                background-color: var(--color-dark);
+                position: absolute;
+                border: inherit;
+                top: 100%;
+                left: var(--reviewCardCornerOffsetLeft);
+                rotate: 45deg;
+                translate: 0 -50%;
+                clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+            }
+        }
+
+        &__footer {
+            display: flex;
+            flex-direction: column;
+            margin-left: 11%;
+        }
+
+        &__name,
+        &__company {
+            font-style: normal;
+        }
+
+        &__name {
+            color: var(--color-greenL);
+        }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 565px;
+        margin: 0 auto;
+    }
+
+    &__arrow-button {
+        @include m.reset-button;
+        @include m.flex-center;
+        @include m.square(48px);
+        cursor: pointer;
+        color: var(--color-light);
+
+        @include md.hover {
+            background-color: var(--color-greenL);
+            border-radius: 25%;
+        }
+
+        &[disabled] {
+            color: var(--color-grey-alt);
+            cursor: not-allowed;
+
+            @include md.hover {
+                background-color: inherit;
+            }
+        }
+
+        img {
+            @include m.square(20px);
+        }
+    }
+}

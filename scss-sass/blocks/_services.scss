@@ -1,0 +1,117 @@
+@use '../variables';
+@use '../mixins' as m;
+@use '../media' as md;
+
+.services {
+    &__list {
+        &:not(:last-child) {
+            margin-bottom: 100px;
+
+            @include md.respond('max', md.$mobile) {
+                margin-bottom: 70px;
+            }
+        }
+    }
+}
+
+.service-card {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 25px;
+    min-height: 310px;
+    padding: 50px;
+    background-color: var(--color-grey);
+    border: var(--border);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--box-shadow);
+
+    @include md.respond('max', md.$mobile) {
+        display: grid;
+        grid-template-columns: auto auto;
+        row-gap: 27px;
+    }
+
+    @include md.respond('max', md.$mobile-s) {
+        padding: 25px;
+    }
+
+    &__image {
+        align-self: center;
+
+        @include md.respond('max', md.$desktop) {
+            max-width: 50%;
+            height: auto;
+        }
+
+        @include md.respond('max', md.$mobile) {
+            max-width: 170px;
+            height: auto;
+        }
+
+        @include md.respond('max', md.$mobile-s) {
+            max-width: 140px;
+        }
+    }
+
+    &--accent-bg {
+        background-color: var(--color-greenL);
+    }
+
+    &--dark-bg {
+        background-color: var(--color-dark);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: 30px;
+
+        @include md.respond('max', md.$mobile) {
+            display: contents;
+        }
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+
+        @include md.respond('max', md.$mobile) {
+            grid-column: -1/1;
+        }
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        column-gap: 15px;
+        font-size: 20px;
+
+        @include md.respond('max', md.$mobile) {
+            align-self: end;
+        }
+
+        @include md.hover {
+            opacity: 0.75;
+        }
+
+        &--light {
+            color: var(--color-grey);
+        }
+
+        &-icon-wrapper {
+            @include m.flex-center;
+            @include m.square(41px);
+            background-color: currentColor;
+            border-radius: 50%;
+            color: darkslategray;
+        }
+
+        &-label {
+            @include md.respond('max', md.$mobile) {
+                @include m.visually-hidden;
+            }
+        }
+    }
+}

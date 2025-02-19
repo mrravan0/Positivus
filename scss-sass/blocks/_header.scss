@@ -1,0 +1,96 @@
+@use '../mixins' as m;
+@use '../media' as md;
+@use '../variables';
+
+.header {
+    padding-top: 60px;
+
+    @include md.respond('max', md.$desktop) {
+        padding-top: 30px;
+    }
+
+    @include md.respond('max', md.$mobile) {
+        padding-top: 15px;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 40px;
+
+        @include md.respond('max', md.$tablet) {
+            column-gap: 20px;
+        }
+    }
+
+    .logo__image {
+        @include md.respond('max', md.$tablet) {
+            max-width: 120px;
+        }
+
+        @include md.respond ('max', md.$mobile) {
+            max-width: 145px;
+        }
+    }
+
+    &__menu {
+        margin-left: auto;
+        font-size: 20px;
+
+        @include md.respond('max', md.$desktop) {
+            font-size: 18px;
+        }
+
+        @include md.respond('max', md.$tablet) {
+            font-size: 15px;
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+            column-gap: 40px;
+
+            @include md.respond('max', md.$desktop) {
+                column-gap: 20px;
+            }
+        }
+
+        &-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            height: 50px;
+
+            @include md.hover {
+                &::after {
+                    width: 100%;
+                }
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                background-color: var(--color-greenL);
+                transition-duration: inherit;
+                top: 100%;
+                left: 50%;
+                translate: -50%;
+                width: 0%;
+                height: 5px;
+            }
+        }
+    }
+
+    &__button {
+        height: 48px;
+        padding-inline: 18px;
+        font-size: 16px;
+
+        @include md.respond('max', md.$tablet) {
+            height: 45px;
+            padding-inline: 14px;
+            font-size: 15px;
+        }
+    }
+}

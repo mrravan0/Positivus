@@ -1,0 +1,54 @@
+@use '../variables';
+@use '../mixins' as m;
+@use '../media' as md;
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 5px;
+
+    @include md.respond('max', md.$mobile) {
+        row-gap: 10px;
+    }
+
+    &__label {
+        @include m.fluid-text(16, 14)
+    }
+
+    &__input {
+        width: 100%;
+        height: var(--input-height);
+        padding-inline: 30px;
+        border: var(--border);
+        border-radius: var(--border-radius-small);
+        cursor: pointer;
+
+        @include md.hover {
+            background-color: var(--color-greenL);
+        }
+
+        @include md.respond('max', md.$mobile) {
+            padding-inline: 20px;
+        }
+
+        &:focus {
+            border-color: var(--color-greenL);
+            outline: none;
+        }
+
+        &::placeholder {
+            color: var(--color-grey-alt);
+        }
+
+        &--textarea {
+            height: 190px;
+            padding-block: 18px;
+            resize: none;
+
+            @include md.respond('max', md.$mobile) {
+                height: 132px;
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+:root {
+    --color-dark: rgb(25, 26, 35);
+    --color-dark-alt: rgb(41, 42, 50);
+    --color-grey: rgb(243, 243, 243);
+    --color-grey-alt: rgb(137, 137, 137);
+    --color-greenL: rgb(185, 255, 102);
+    --color-light: rgb(255, 255, 255);
+    --border: 1px solid var(--color-dark);
+    --border-radius-small: 7px;
+    --border-radius: 14px;
+    --border-radius-large: 45px;
+    --box-shadow: 0px 5px 0px 0px var(--color-dark);
+    --font-family: 'Space Grotesk', sans-serif;
+    --container-width: 1240px;
+    --container-padding-x: 20px;
+    --section-padding-y: 70px;
+    --button-height: 68px;
+    --input-height: 60px;
+    --transition-duration: .3s;
+}

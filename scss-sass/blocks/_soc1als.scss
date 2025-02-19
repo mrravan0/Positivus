@@ -1,0 +1,22 @@
+@use '../variables';
+@use '../mixins' as m;
+@use '../media' as md;
+
+.soc1als {
+    &__list {
+        display: flex;
+        column-gap: 20px;
+        @include md.respond('max', md.$desktop) {
+            column-gap: 10px;
+        }
+    }
+
+    &__link {
+        @include m.flex-center(true);
+        @include m.square(40px);
+        @include md.hover{
+            background-color: var(--color-greenL);
+            border-radius: var(--border-radius);
+        }
+    }
+}

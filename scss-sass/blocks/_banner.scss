@@ -1,0 +1,49 @@
+@use '../variables';
+@use '../media' as md;
+
+.banner {
+    --bannerImageOffSetY: 24px;
+    padding-block: var(--bannerImageOffSetY);
+
+
+    @include md.respond('max', md.$tablet) {
+        --bannerImageOffSetY: 0;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--color-grey);
+        border-radius: var(--border-radius-large);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        row-gap: 26px;
+        padding: 60px;
+
+        @include md.respond('max', md.$tablet) {
+            padding: 50px;
+        }
+        @include md.respond('max', md.$mobile) {
+            padding: 30px;
+            row-gap: 20px;
+        }
+    }
+
+    &__image {
+        margin-block: calc(var(--bannerImageOffSetY) * -1);
+
+        @include md.respond('max', md.$tablet) {
+            max-width: 40%;
+            height: auto;
+        }
+    }
+
+    &__description {
+        max-width: 500px;
+    }
+}
